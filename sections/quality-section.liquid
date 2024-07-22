@@ -1,0 +1,89 @@
+<section class="quality-section">
+  <div class="container-career">
+  <div class="quality-box">
+       <h1 class="xmt">{{ section.settings.quality-main-headings}}</h1>
+        {{ section.settings.quality-paragraph}}
+        <h3>{{ section.settings.quality-main-headings-no-two}}</h3>
+          <a href="{{ section.settings.button-link }}" class="button-now">{{ section.settings.button-linktext }}</a>
+       <h3>{{ section.settings.quality-main-headings-no-three}}</h3>
+        {{ section.settings.quality-paragraph-last}}
+
+  </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "quality-section",
+    "settings": [
+                 {
+              "type":"text",
+               "id":"quality-main-headings",
+               "label":"quality main headings"
+            },
+                       {
+              "type":"text",
+               "id":"quality-main-headings-no-two",
+               "label":"quality main headings two"
+            },
+                             {
+              "type":"text",
+               "id":"quality-main-headings-no-three",
+               "label":"quality main headings three"
+            },
+                   {
+              "type":"richtext",
+               "id":"quality-paragraph",
+               "label":"quality paragraph"
+            },
+                        {
+              "type":"richtext",
+               "id":"quality-paragraph-last",
+               "label":"quality paragraph last"
+            },
+           {
+      "id": "button-link",
+      "type": "url",
+      "label": "Button link"
+    },
+
+    {
+      "id": "button-linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Contact Us"
+    }
+
+    ],
+     "presets": [
+    {
+      "name": "quality-section",
+      "category": "Custom"
+    }
+  ]
+  }
+{% endschema %}

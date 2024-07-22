@@ -1,0 +1,63 @@
+<section class="naf-section" style="background-image:url({{section.settings.product-bg-img| img_url: 'master'}}) ;     background-repeat: no-repeat;
+    background-size: cover;   ">
+             <h2>{{ section.settings.naf_heading}}</h2>
+
+  <div class="container-career">
+    <div class="flex">
+        {% for block in section.blocks %}
+          <div class="naf-box">
+                           <div class="iconx-box">
+                 <img src="{{block.settings.nafs-image| img_url: 'master'}}" alt=""> </div>
+                <h4>{{ block.settings.main-heading-naf }}</h4>
+                   <p>{{ block.settings.main_description }}</p> 
+        </div>      
+      {% endfor %}
+
+    </div>
+    
+  </div>
+  
+</section>
+{% schema %}
+{
+   "name":"NAF-section",
+  "settings": [
+                        {
+                "type":"image_picker",
+                "id":"product-bg-img",
+                "label":"background-image-another"
+             },
+          {
+               "type":"text",
+               "id":"naf_heading",
+               "label":"naf heading"
+            }
+
+  ],
+   "blocks":[
+      {
+		 "name": "Slides-one",
+         "type":"text",
+         "settings": [
+  
+            {
+                "type":"image_picker",
+                "id":"nafs-image",
+                "label":"nafs image"
+             },
+  
+                     {
+               "type":"text",
+               "id":"main-heading-naf",
+               "label":"heading "
+            },
+                       {
+               "type":"text",
+               "id":"main_description",
+               "label":"main description"
+            }
+         ]
+      }
+   ]
+  }
+{% endschema %}

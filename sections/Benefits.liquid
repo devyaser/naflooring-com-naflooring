@@ -1,0 +1,36 @@
+ <div class="main-List-Benefits">
+   <h4 class="list-headings"> Benefits </h4>
+{% for block in section.blocks %}
+  <div class="List-txt-Benefits">
+     <ul>
+   <li>
+{{ block.settings.List-text-Benefits }}
+
+          </li>
+       </ul>
+    </div>
+{% endfor %}
+
+      </div>
+
+{% schema %}
+{
+
+   "name":"Benefits",
+   "blocks":[
+      {
+		 "name": "List",
+         "type":"text",
+         "settings": [
+              
+            {
+               "type":"richtext",
+               "id":"List-text-Benefits",
+               "label":"List-Texts"
+            }
+
+         ]
+      }
+   ]
+}
+{% endschema %}

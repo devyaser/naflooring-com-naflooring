@@ -1,0 +1,73 @@
+<div class="new-banner"  style="background-image:url({{section.settings.banner-bg-img| img_url: 'master'}});   ">
+  <div class="container-career">
+    
+<div class="flex">
+  <div class="banner-titles">
+ <h1>{{ section.settings.banner-heading}}</h1>
+    {{ section.settings.para-text}}
+      <a href="{{ section.settings.link }}" class="button-now">{{ section.settings.linktext }}</a>
+  </div>
+    <div class="banner-form "id="from-st">
+    <h3>{{ section.settings.forms-headings}}</h3>
+        {{ section.settings.form-paragraph}}
+  </div>
+  </div>
+      </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "New_Banner",
+    "settings": [
+
+              {
+                "type":"image_picker",
+                "id":"banner-bg-img",
+                "label":"banner-bg-imgs"
+             },
+
+           {
+              "type":"text",
+               "id":"banner-heading",
+               "label":"banner-Headings"
+            },
+      {
+              "type":"text",
+               "id":"forms-headings",
+               "label":"forms headings"
+            },
+             {
+              "type":"richtext",
+               "id":"para-text",
+               "label":"para-texts"
+            },
+                   {
+              "type":"richtext",
+               "id":"form-paragraph",
+               "label":"form paragraph"
+            },
+     {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Contact Us"
+    }
+
+      
+      
+    ],
+     "presets": [
+    {
+      "name": "New_Banner",
+      "category": "Custom"
+    }
+  ]
+  }
+{% endschema %}

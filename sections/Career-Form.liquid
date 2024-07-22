@@ -1,0 +1,197 @@
+<section class="Career-form-2">
+     <h1>{{ section.settings.form-heading}}</h1>
+       <h2>{{ section.settings.sub-heading}}</h2>
+           {{ section.settings.para-texts}}
+    <div class="form-pagess">
+  
+    <div class="career-form{% unless section.settings.image %}{% endunless %} contact_content">
+        {% if section.settings.title != blank %}
+          <h2 class="headline">
+            {{ section.settings.title | escape }}
+          </h2>
+        {% endif %}
+        {% if section.settings.contact_content != blank %}
+          <div class=" career-form-text">
+            {{ section.settings.contact_content }}
+          </div>
+        {% endif %}
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <p class="quote">{{ 'contact.form.post_success' | t }}</p>
+          {% endif %}
+
+          {% if form.errors %}
+            <p class="quote">{{ 'general.forms.post_error' | t }}</p>
+
+           {% assign message = 'contact.form.message' | t %}
+            <ul class="center">
+              {% for field in form.errors %}
+                {% if field == 'form' %}
+                  <li>
+                    {{ form.errors.messages[field] }}
+                  </li>
+                {% else %}
+                  <li>
+                    {% assign field_name = field | replace: 'body', message %}
+                    {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
+                  </li>
+                {% endif %}
+              {% endfor %}
+             </ul>
+          {% endif %}
+           <div class="main-career-form">
+            {% assign name_attr = 'contact.form.name' | handle %}
+            <label for="contactFormName"> First Name <span class="red">*</span></label>
+            <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="Enter your first name" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
+           </div>
+        
+            <div class="main-career-form">
+            {% assign name_attr = 'contact.form.name' | handle %}
+            <label for="contactFormName">Last Name<span class="red">*</span></label>
+            <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="Enter your last name" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
+           </div>
+
+              <div class="main-career-form">
+                 <label for="contactFormName">Phone number<span class="red">*</span></label>
+             <input type="tel" id="ContactForm-phone" required class="field__input" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="Enter you phone number">
+           </div>
+      
+           <div class="main-career-form">
+            <label for="contactFormEmail">{{ 'contact.form.email' | t }} <span class="red">*</span></label>
+            <input type="email" id="contactFormEmail" name="contact[email]" placeholder="Enter your email here" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required="required">
+           </div>
+                <div class="main-career-form">
+          <label for="contactFormMessage">{{ 'contact.form.message' | t }} <span class="red">*</span></label>
+          <textarea rows="5" id="contactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}" required="required">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+                </div>
+        <div class="career-form-btn">
+          <input type="submit" class="submit-btn" value="{{ 'contact.form.send' | t }}" />
+        </div>
+        {% endform %}
+      </div>
+             
+          <!-- html--from -->
+            <div class="contactinfo">
+            <h6>Contact Us</h6>
+            <span>Please scan the QR code to fill out an application and one of our managers will call you for an interview.</span>
+                <div class="fex">
+                    <div class="icon">
+                        <a href=""> <img src="https://cdn.shopify.com/s/files/1/0024/2188/2941/files/Group_40035.png?v=1695217200" alt="">   </a>
+
+                       
+                    </div>
+                    <div class="text">
+                        <h5>Phone</h5>
+                        <a href="tel:424-354-5593">424-354-5604</a>
+
+                    </div>
+                </div>
+                <div class="fex">
+                    <div class="icon">
+                         <a href=""> <img src="https://cdn.shopify.com/s/files/1/0024/2188/2941/files/Group_40042.png?v=1695217200" alt="">   </a>
+                    </div>
+                    <div class="text">
+                        <h5>Email</h5>
+                        <a href="mailto:hr@naflooring.com">hr@naflooring.com</a>
+                      
+                    </div>
+                </div>
+            </div>
+       <!--html--from--end  -->
+        <div class="image-below-section">
+              <img src="https://cdn.shopify.com/s/files/1/0024/2188/2941/t/22/assets/New_Hire_Application_Form_Link_resize.png?v=1705010031" alt="Image Description">
+        </div>
+      
+    </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "Contact form",
+  "class": "contact-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Contact form"
+    },
+
+
+           {
+              "type":"text",
+               "id":"form-heading",
+               "label":"form-Headings"
+            },
+
+           {
+              "type":"text",
+               "id":"sub-heading",
+               "label":"sub-headings"
+            },
+       {
+      "type": "richtext",
+      "id": "para-texts",
+      "label": "text"
+
+       },
+    
+    {
+      "type": "richtext",
+      "id": "contact_content",
+      "label": "Text",
+      "default": "<p>Contact form description.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "800 x 800px recommended"
+    },
+    {
+      "type": "select",
+      "id": "contact_text_position",
+      "label": "Form position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "contact_text_alignment",
+      "label": "Text alignment",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Career-Form",
+      "category": "custom"
+    }
+  ]
+}
+
+{% endschema %}

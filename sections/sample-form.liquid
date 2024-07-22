@@ -1,0 +1,93 @@
+<section class="sample-form">
+  <div class="container-career">
+    <div class="background-form" style="background-image:url({{section.settings.form-product-bg-img| img_url: 'master'}}) ;     background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;   ">
+                   <h2>{{ section.settings.form-sample_heading}}</h2>
+                  <p>{{ section.settings.form-sample_heading-one}}</p>
+                  <p>{{ section.settings.form-sample_heading-two}}</p>
+      <div class="button-flex">
+        <div class="button-one">
+                <a href="{{ section.settings.link-form }}" class="button-now">{{ section.settings.linktext-form }}</a>
+
+        </div>
+                <div class="button-two">
+                <a href="{{ section.settings.sample-link }}" class="button-now-two">{{ section.settings.sample-linktext }}</a>
+
+        </div>
+        
+      </div>
+
+
+      
+    </div>
+    
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "sample-form",
+    "settings": [
+                              {
+                "type":"image_picker",
+                "id":"form-product-bg-img",
+                "label":"form product bg img"
+             },
+                {
+               "type":"text",
+               "id":"form-sample_heading",
+               "label":"form sample heading"
+            },
+             {
+               "type":"text",
+               "id":"form-sample_heading-one",
+               "label":"form sample heading"
+            },
+                   {
+               "type":"text",
+               "id":"form-sample_heading-two",
+               "label":"form sample heading"
+            },
+           {
+      "id": "link-form",
+      "type": "url",
+      "label": "Button link"
+    },
+
+    {
+      "id": "linktext-form",
+      "type": "text",
+      "label": "Button text",
+      "default": "Contact Us"
+    }
+,
+           {
+      "id": "sample-link",
+      "type": "url",
+      "label": "Button link"
+    },
+
+    {
+      "id": "sample-linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Contact Us"
+    }
+    ]
+  }
+{% endschema %}

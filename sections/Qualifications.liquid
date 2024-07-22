@@ -1,0 +1,38 @@
+ <div class="main-List-Qualifications">
+   <h4 class="list-headings">Qualifications </h4>
+{% for block in section.blocks %}
+  <div class="List-txt-Qualifications">
+     <ul>
+   <li>
+{{ block.settings.List-text-Q }}
+
+          </li>
+       </ul>
+    </div>
+  
+{% endfor %}
+    <p> Join our team as a Flooring Installer and be part of the restoration industry. We offer competitive pay rates and opportunities for career growth. Apply now to become part of our dedicated team!  </p>
+
+      </div>
+
+{% schema %}
+{
+
+   "name":"Qualifications",
+   "blocks":[
+      {
+		 "name": "List",
+         "type":"text",
+         "settings": [
+              
+            {
+               "type":"richtext",
+               "id":"List-text-Q",
+               "label":"List-Texts"
+            }
+
+         ]
+      }
+   ]
+}
+{% endschema %}

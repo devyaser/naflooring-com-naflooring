@@ -1,0 +1,38 @@
+
+
+ <div class="main-List-Job-Duties">
+   <h4 class="list-headings"> Job Duties  </h4>
+{% for block in section.blocks %}
+  <div class="List-txt">
+     <ul>
+   <li>
+{{ block.settings.List-text }}
+
+          </li>
+       </ul>
+    </div>
+{% endfor %}
+
+      </div>
+
+{% schema %}
+{
+
+   "name":"Job-Duties",
+   "blocks":[
+      {
+		 "name": "List",
+         "type":"text",
+         "settings": [
+              
+            {
+               "type":"richtext",
+               "id":"List-text",
+               "label":"List-Text"
+            }
+
+         ]
+      }
+   ]
+}
+{% endschema %}

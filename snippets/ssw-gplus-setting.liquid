@@ -1,0 +1,38 @@
+if( gplusClicked )
+    return;
+  gplusClicked = true;
+
+  setTimeout(function(){
+    gplusClicked = false;
+  },4000);
+ssw.oauthpopup({
+  path: HE_DOMAIN + '/lite2/auth/gplusconnect?_sid=' + ssw.cookie("hesid") + '&shop=' + Shopify.shop,
+  windowOptions: 'width=400,height=550',
+  callback: function () {
+    ssw.ajax({
+      type: 'POST',
+      url: '/apps/ssw/lite2/auth/gpluscallback',
+      data: {'_sid': ssw.cookie('hesid')},
+      success: function (response) {
+        sswSocialLogin = 1;
+        if (ssw.isEmptyObject(response)) {
+          onOpenForm();
+        } else {
+          if (!response.password && response.email) {
+            targetSEMModal(response, 'Google +');
+          } else {
+            if (response.password) {
+              var shopifyLogin = new ShopifyLogin();
+              shopifyLogin.preLogin(response.email, response.password);
+              shopifyLogin.login();
+            } else {
+              addMessage('#login_modal .login-failed', 'You already have an account registered to `' + response.email + '`. This is a first time you\'re logging in using your social account, please type your password.', 'warning');
+              ssw('#login_modal').sswModal();
+            }
+          }
+        }
+      },
+      dataType: 'json'
+    });
+  }
+});

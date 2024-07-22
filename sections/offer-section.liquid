@@ -1,0 +1,134 @@
+
+<secion class="offer-section" style="background-image:url({{section.settings.offer-product-bg-img| img_url: 'master'}}) ;     background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;   ">
+  <div class="container-career">
+    <div class="flex">
+      <div class="offer-content">
+         <h2>{{ section.settings.offer-main-headings}}</h2>
+        <ul>
+         <li>
+          <p>{{ section.settings.main_description-one }}</p> 
+         </li>
+                 <li>
+          <p>{{ section.settings.main_description-two }}</p> 
+         </li>
+                 <li>
+          <p>{{ section.settings.main_description-three }}</p> 
+         </li>
+          </ul>
+               <h3>{{ section.settings.offer-main-headings-no-three}}</h3>
+          <p>{{ section.settings.main_description-four }}</p> 
+        
+                  <p>{{ section.settings.main_description-five }}</p> 
+          <a href="{{ section.settings.link }} " class="button-now">{{ section.settings.linktext }}</a>
+      </div>
+      <div class="offer-image"> 
+                         <img src="{{section.settings.offer-image| img_url: 'master'}}" alt="">
+
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</secion>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "offer-section",
+    "settings": [
+                    {
+                "type":"image_picker",
+                "id":"offer-product-bg-img",
+                "label":"offer product bg img"
+             },
+                      {
+              "type":"text",
+               "id":"offer-main-headings",
+               "label":"offer main headings"
+            },
+                              {
+              "type":"text",
+               "id":"offer-main-headings-no-three",
+               "label":"offer main headings no three"
+            },
+            {
+                "type":"image_picker",
+                "id":"offer-image",
+                "label":"offerimage"
+             },
+                            {
+              "type":"text",
+               "id":"offer-main-headings-no-two",
+               "label":"offer main headings no two"
+            },        
+            {
+               "type":"text",
+               "id":"main_description-one",
+               "label":"main description one"
+            }
+      ,
+            {
+               "type":"text",
+               "id":"main_description-two",
+               "label":"main description two"
+            }
+      ,
+            {
+               "type":"text",
+               "id":"main_description-three",
+               "label":"main description three"
+            }
+      ,
+            {
+               "type":"text",
+               "id":"main_description-four",
+               "label":"main description four"
+            },
+            {
+               "type":"text",
+               "id":"main_description-five",
+               "label":"main description five"
+            },
+           {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Contact Us"
+    }
+    ]
+  }
+{% endschema %}
+
